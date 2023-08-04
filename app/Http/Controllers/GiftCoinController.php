@@ -29,13 +29,26 @@ class GiftCoinController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'user_id' => 'required',
             'available_coins' => 'required',
+            'purchase_coins' => 'required',
+            'lose_coins' => 'required',
+            'won_coins' => 'required',
+            'withdraw_coins' => 'required',
+           
+
            
         ]);
-        return $races = Races::create([
-            'available_coins' => $request->available_coins,
-           
-        ]);
+    //   echo 'hell';
+      return $giftCoin = GiftCoin::create([
+        'user_id' => $request->user_id,
+        'available_coins' => $request->available_coins,
+        'purchase_coins' => $request->purchase_coins,
+        'lose_coins' => $request->lose_coins,
+        'won_coins' => $request->won_coins,
+        'withdraw_coins' => $request->withdraw_coins,
+       
+    ]);
     }
 
     /**

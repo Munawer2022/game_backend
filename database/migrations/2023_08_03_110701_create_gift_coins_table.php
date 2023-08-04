@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('gift_coins', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->integer('purchase_coins');
             $table->integer('available_coins');
+            $table->integer('lose_coins');
+            $table->integer('won_coins');
+            $table->integer('withdraw_coins');
             $table->timestamps();
         });
     }

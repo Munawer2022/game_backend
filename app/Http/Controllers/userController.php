@@ -13,7 +13,7 @@ class userController extends Controller
          $request->validate([
             'name' => 'required',
             'mobile_no' => 'required|regex:/[0-9]{10}/|digits:10', 
-            'password' => 'required|confirmed',
+            'password' => 'required',
         ]);
         if(User::where('mobile_no',$request->mobile_no)->first()){
             return response([
