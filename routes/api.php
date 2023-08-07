@@ -23,6 +23,8 @@ Route::post('/bids', [bidsController::class, 'store']);
 Route::post('/races', [RacesController::class, 'store']);
 Route::post('/available_coins', [GiftCoinController::class, 'store']);
 
+
 Route::middleware(['auth:sanctum'])->group(function(){
+    Route::post('/logout', [userController::class, 'logout']);
     // Route::post('/bids', [bidsController::class, 'store']);
 });
