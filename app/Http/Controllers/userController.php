@@ -12,7 +12,7 @@ class userController extends Controller
     public function register(Request $request){
          $request->validate([
             'name' => 'required',
-            'mobile_no' => 'required|regex:/[0-9]{10}/|digits:10', 
+            'mobile_no' => 'required|digits:11', 
             'password' => 'required',
         ]);
         if(User::where('mobile_no',$request->mobile_no)->first()){
@@ -30,14 +30,16 @@ class userController extends Controller
         return response([
             'user' => 'Registration success',
             'status' => 'success',
-            'token' => $token
+            'token' => $token,
+            'name' => $request->name,
+            'mobile_no' => $request->mobile_no,
         ], 201);
     }
 
     public function login(Request $request){
         $request->validate([
             'name' => 'required',
-            'mobile_no' => 'required|regex:/[0-9]{10}/|digits:10', 
+            'mobile_no' => 'required|digits:11', 
             'password' => 'required',
         ]);
 
@@ -45,7 +47,7 @@ class userController extends Controller
 
         if(!$user || !Hash::check($request->password, $user->password)){
             return response([
-                'message' => 'The provided credentials are incorrect.'
+                'message' => 'The provided credentials are incorrect.',
            ], 401);
         }
 
@@ -54,7 +56,10 @@ class userController extends Controller
         return response([
             'user' => 'login success',
             'status' => 'success',
-            'token' => $token
+            'token' => $token,
+            'name' => $request->name,
+            'mobile_no' => $request->mobile_no,
+            
         ], 200);
 
     }
