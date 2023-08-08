@@ -22,6 +22,8 @@ class User extends Authenticatable
         'mobile_no',
         'password',
         'code',
+        'coin_balance',
+        'type',
     ];
 
     /**

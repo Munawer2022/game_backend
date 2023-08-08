@@ -17,6 +17,7 @@ class userController extends Controller
             'name' => 'required',
             'mobile_no' => 'required|digits:11',
             'password' => 'required',
+            'type' => 'required',
         ]);
         if (User::where('mobile_no', $request->mobile_no)->first()) {
             return response([
@@ -32,8 +33,10 @@ class userController extends Controller
         $user = User::create([
             'name'      => $request->name,
             'mobile_no' => $request->mobile_no,
+            'type'      => $request->type,
             'password'  => Hash::make($request->password),
             'code'      => $uniqueCode,
+            'coin_balance' => 0,
         ]);
 
         $token = $user->createToken($request->mobile_no)->plainTextToken;
