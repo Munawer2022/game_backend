@@ -27,12 +27,14 @@ class userController extends Controller
             'password' => Hash::make($request->password),
         ]);
         $token = $user->createToken($request->mobile_no)->plainTextToken;
+      
         return response([
             'user' => 'Registration success',
             'status' => 'success',
             'token' => $token,
             'name' => $request->name,
             'mobile_no' => $request->mobile_no,
+            'id' => $user->id,
         ], 201);
     }
 
@@ -59,7 +61,7 @@ class userController extends Controller
             'token' => $token,
             'name' => $request->name,
             'mobile_no' => $request->mobile_no,
-            
+            'id' => $user->id,
         ], 200);
 
     }
