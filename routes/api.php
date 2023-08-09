@@ -17,14 +17,14 @@ use App\Http\Controllers\GiftCoinController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::post('register', [userController::class,'register']);
-Route::post('login', [userController::class,'login']);
+
+Route::post('register', [userController::class, 'register']);
+Route::post('login', [userController::class, 'login']);
 Route::post('/bids', [bidsController::class, 'store']);
 Route::post('/races', [RacesController::class, 'store']);
 Route::post('/available_coins', [GiftCoinController::class, 'store']);
 
 
-Route::middleware(['auth:sanctum'])->group(function(){
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [userController::class, 'logout']);
-    // Route::post('/bids', [bidsController::class, 'store']);
 });
