@@ -53,9 +53,13 @@ class GiftCoinController extends Controller
         if ($request->coin_type == 1 || $request->coin_type == 5) {
             if ((int) $fromUser->coin_balance < (int) $request->coins) {
 
+                // return response()->json([
+                //     'message' => "{$fromUser->name} has insufficient funds ",
+                // ]);
                 return response()->json([
-                    'message' => "{$fromUser->name} has insufficient funds ",
+                    'message' => "Insufficient funds",
                 ]);
+                
             }
             $fromCoins = -$fromCoins;
             $toCoins = $toCoins;
@@ -98,6 +102,7 @@ class GiftCoinController extends Controller
 
         return response()->json([
             'coinsData' => $giftCoin,
+            'status'=>"Transferred"
         ]);
     }
 
@@ -130,6 +135,6 @@ class GiftCoinController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        ;
     }
 }
