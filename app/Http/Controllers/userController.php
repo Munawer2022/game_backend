@@ -74,7 +74,7 @@ class userController extends Controller
             'user' => 'login success',
             'status' => 'success',
             'token' => $token,
-            // 'name' => $request->name,
+            'name' => $user->name,
             'mobile_no' => $request->mobile_no,
             'id' => $user->id,
             'code' => $user->code,
