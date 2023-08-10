@@ -55,7 +55,7 @@ class userController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            // 'name' => 'required',
             'mobile_no' => 'required|digits:11',
             'password' => 'required',
         ]);
@@ -74,7 +74,7 @@ class userController extends Controller
             'user' => 'login success',
             'status' => 'success',
             'token' => $token,
-            'name' => $request->name,
+            // 'name' => $request->name,
             'mobile_no' => $request->mobile_no,
             'id' => $user->id,
             'code' => $user->code,
