@@ -98,4 +98,20 @@ class userController extends Controller
             'status' => 'success'
         ], 200);
     }
+
+    public function checkBalance(Request $request)
+    {
+        $userId = $request->userId;
+        $user = User::whereId($userId)->first();
+
+        if ($user == null) {
+            return response()->json([
+                'message' => "User not found",
+            ]);
+        }
+
+        return response()->json([
+            'coin_balance' => $user->coin_balance,
+        ]);
+    }
 }

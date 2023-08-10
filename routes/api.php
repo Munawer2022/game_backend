@@ -20,6 +20,7 @@ use App\Http\Controllers\GiftCoinController;
 
 Route::post('register', [userController::class, 'register']);
 Route::post('login', [userController::class, 'login']);
+Route::get('check-user-balance', [userController::class, 'checkBalance']);
 Route::post('/bids', [bidsController::class, 'store']);
 Route::post('/available_coins', [GiftCoinController::class, 'store']);
 
