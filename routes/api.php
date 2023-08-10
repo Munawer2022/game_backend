@@ -21,8 +21,12 @@ use App\Http\Controllers\GiftCoinController;
 Route::post('register', [userController::class, 'register']);
 Route::post('login', [userController::class, 'login']);
 Route::post('/bids', [bidsController::class, 'store']);
-Route::post('/races', [RacesController::class, 'store']);
 Route::post('/available_coins', [GiftCoinController::class, 'store']);
+
+// STORE RACE
+Route::post('/races', [RacesController::class, 'store']);
+
+Route::get('/check-race', [RacesController::class, 'checkRaceAvailability']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
