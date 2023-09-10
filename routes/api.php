@@ -29,6 +29,8 @@ Route::post('/races', [RacesController::class, 'store']);
 
 Route::get('/check-race', [RacesController::class, 'checkRaceAvailability']);
 
+Route::post('/update-winner-horse', [RacesController::class, 'updateWinnerHorse']);
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [userController::class, 'logout']);

@@ -109,6 +109,19 @@ class RacesController extends Controller
         ]);
     }
 
+    public function updateWinnerHorse(Request $request)
+    {
+        $race = Races::whereStartTime($request->start_time)->first();
+
+        if (!$race) {
+            return response()->json(['error' => 'Race not found'], 404);
+        }
+
+        $race->update(['winner_horse_no' => $request->winner_horse_no]);
+
+        return response()->json(['message' => 'Winner horse updated successfully', 'race' => $race]);
+    }
+
 
 
 
